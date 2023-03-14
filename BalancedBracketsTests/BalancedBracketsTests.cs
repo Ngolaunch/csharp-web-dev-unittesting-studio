@@ -42,19 +42,35 @@ namespace BalancedBracketsTests
             Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("[launchCode"));
         }
         [TestMethod]
-        public void ReversedBracketsWithStringReturnFalse()
+        public void ReversedPairReturnsFalse()
         {
-            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("launch]Code["));
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("]["));
         }
         [TestMethod]
         public void SingleBracketsWithStringReturnFalse()
         {
             Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("launchCode["));
         }
+        
         [TestMethod]
-        public void OpeningBracketsReturnTrue()
+        public void BracketsAroundStringReturnTrue()
         {
-            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[]launchCode"));
+            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[launchCode]"));
+        }
+        [TestMethod]
+        public void MismatchReturnsFalse()
+        {
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("]launchCode["));
+        }
+        [TestMethod]
+        public void MismatchAroundStringReturnFalse()
+        {
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("[launch[Code]"));
+        }
+        [TestMethod]
+        public void AlotReturnTrue()
+        {
+            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[[[]]]"));
         }
     }
 
